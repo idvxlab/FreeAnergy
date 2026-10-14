@@ -1,0 +1,8 @@
+Submit 2-3 CANDIDATE action sequences for THIS step, then pick ONE with `selected` — only the chosen sequence runs.
+Call once at the start of every step turn, before any other mutating tool.
+Submit 2 or 3 entries; each has label (short name) and commands (1-8 shell commands, ordered).
+Choose by weighting in this order: (1) expected effect — does running it change the tested artifact or an observable test result and advance the current objective? A move that already left the artifact unchanged has no expected effect; (2) exploration — counts only when information is genuinely missing (which metric fails, by how much, which file to change); (3) deviation — judge ONLY against skill_corrections (validated corrections) for the current objective, never against the original skill; with no corrections, deviation costs nothing.
+SELF-CONTAINMENT (hard rule): every candidate must be executable from the CURRENT container state. A candidate that reads/executes a file must either create it in the SAME candidate, or declare it in assumes. A candidate whose precondition is absent is dropped before selection.
+assumes (optional): preconditions — an absolute path, 'bin:<name>', or 'port:<n>'. provides (optional): absolute paths this candidate creates.
+why (optional, <=240 chars): your one-line trade-off across the three weights above.
+Your chosen sequence executes automatically; then refine/observe for at most {{OBSERVE_BUDGET}} calls (read/ls/find/grep/run_test, plus write/edit/run) and end the turn.

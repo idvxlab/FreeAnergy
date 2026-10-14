@@ -1,0 +1,30 @@
+# Runtime-generated memory / state
+vfe_memory.json
+*.memory.json
+memory.json
+
+# Logs and run artifacts
+*.log
+*.jsonl
+/tmp/vfe/
+
+# Secrets and private config
+.env
+.env.*
+*.key
+*.pem
+credentials.json
+config.local.*
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Node
+node_modules/
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
